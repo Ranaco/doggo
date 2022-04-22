@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "979252406359",
+    "project_id": "doggo-save",
+    "storage_bucket": "doggo-save.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979252406359:android:c42ce8a2f910a20ebf9b12",
+        "android_client_info": {
+          "package_name": "com.ranaco.doggo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979252406359-gijnmt8aqiutbht2m26m02igamse5iuf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1b0s7spTi-OFHOgeMdGdZl9o_pnzpkgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979252406359-gijnmt8aqiutbht2m26m02igamse5iuf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
