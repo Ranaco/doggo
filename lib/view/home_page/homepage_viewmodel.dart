@@ -21,7 +21,6 @@ class HomePageViewModel extends BaseViewModel {
   }
 
   takeToAddTaskPage() async {
-    await locator<AppRouter>().push(const AddTaskRoute());
     print('Hello there');
   }
 

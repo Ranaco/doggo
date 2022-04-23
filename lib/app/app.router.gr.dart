@@ -37,10 +37,6 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const SignUpPageView());
     },
-    AddTaskRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-          routeData: routeData, child: const AddTaskView());
-    },
     SettingsPageRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const SettingsPageView());
@@ -53,7 +49,6 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(InitialSlideRoute.name, path: '/initial-slide-view'),
         RouteConfig(LoginPageRoute.name, path: '/login-page-view'),
         RouteConfig(SignUpPageRoute.name, path: '/sign-up-page-view'),
-        RouteConfig(AddTaskRoute.name, path: '/add-task-view'),
         RouteConfig(SettingsPageRoute.name, path: '/settings-page-view')
       ];
 }
@@ -90,14 +85,6 @@ class SignUpPageRoute extends PageRouteInfo<void> {
       : super(SignUpPageRoute.name, path: '/sign-up-page-view');
 
   static const String name = 'SignUpPageRoute';
-}
-
-/// generated route for
-/// [AddTaskView]
-class AddTaskRoute extends PageRouteInfo<void> {
-  const AddTaskRoute() : super(AddTaskRoute.name, path: '/add-task-view');
-
-  static const String name = 'AddTaskRoute';
 }
 
 /// generated route for

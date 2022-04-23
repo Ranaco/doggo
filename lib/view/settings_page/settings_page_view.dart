@@ -1,3 +1,4 @@
+import 'package:doggo/states/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
@@ -45,10 +46,11 @@ class SettingsPageView extends StatelessWidget {
                 ],
               ),
               const Center(child: SizedBox(height: 20)),
-              const ProfileTile(
+               ProfileTile(
                 bio:
-                    "hello there this is the biggest thing that I've ever seen",
-                name: "Rana",
+                    UserData.user.bio!,
+                name: UserData.user.name,
+                profilePic: UserData.user.avatar_url,
               ),
               const SizedBox(
                 height: 20,
