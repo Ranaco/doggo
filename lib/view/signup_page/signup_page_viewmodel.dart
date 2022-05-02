@@ -1,8 +1,13 @@
 import 'package:stacked/stacked.dart';
 
+import '../../sevices/auth_service.dart';
+
 class SignUpPageViewModel extends BaseViewModel{
   String email = "";
   String password = "";
+  String name = "";
+  String bio = "";
+
   String confPassword = "";
 
   bool showPass = true;
@@ -16,5 +21,8 @@ class SignUpPageViewModel extends BaseViewModel{
   toggleShowConfPass(){
     showConfPass = !showConfPass;
     notifyListeners();
+  }
+  signUp() async {
+    AuthService().signUp(email: email, password: password, name: name, bio: bio,);
   }
 }

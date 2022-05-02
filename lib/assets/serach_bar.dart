@@ -53,7 +53,6 @@ class Search extends StatelessWidget {
               child: GestureDetector(
                   onTap: () {
                     print("Data");
-                    GlobalData.takeToAddPage();
                   },
                   child: const Icon(
                     Feather.filter,

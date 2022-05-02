@@ -13,11 +13,11 @@ class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
     if (await initialAppState.getFirst() != 1) {
-      router.push(const InitialSlideRoute());
+      router.replace(const InitialSlideRoute());
+    } else if(!AuthService().isAuthenticated){
+      router.replace(const LoginPageRoute());
     } else if(AuthService().isAuthenticated){
       resolver.next(true);
-    } else if(!AuthService().isAuthenticated){
-      router.push(const LoginPageRoute());
     }
   }
 }

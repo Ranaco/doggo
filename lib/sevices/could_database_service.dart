@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doggo/models/user_model.dart';
-import 'package:doggo/states/user_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
-@singleton
+@lazySingleton
 class CloudDatabaseService{
   FirebaseFirestore instance = FirebaseFirestore.instance;
 
@@ -18,6 +17,9 @@ class CloudDatabaseService{
       final data = instance.collection(collection).where(field!, isEqualTo: fieldData).get();
       var date = data.then((value) {
       });
-
   }
+
+  Future<dynamic> create(dynamic data, {required String collection}) async {
+    instance.collection(collection).add(data);
+}
 }

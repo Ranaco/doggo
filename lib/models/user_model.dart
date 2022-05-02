@@ -27,7 +27,7 @@ class UserModel {
         date_created: ConvertDate.fromTimeStamp(json['date_created']).dateTime,
         bio: json['bio'],
         avatar_url: json['avatar_url'],
-        date_updated: ConvertDate.fromTimeStamp(json['date_updated']).dateTime
+        date_updated: json['data_updated'] == null ? null : ConvertDate.fromTimeStamp(json['date_updated']).dateTime
     );
   }
 

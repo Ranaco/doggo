@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:doggo/view/doggo_page/doggo_page_view.dart';
+import 'package:doggo/view/profile_page/profile_page_view.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:doggo/app/auth.guard.dart';
@@ -17,6 +19,9 @@ part './app.router.gr.dart';
     guards: [AuthGuard],
   ),
   AutoRoute(
+    page: ProfilePageView
+  ),
+  AutoRoute(
     page: InitialSlideView,
   ),
   AutoRoute(
@@ -27,6 +32,9 @@ part './app.router.gr.dart';
   ),
   AutoRoute(
     page: SettingsPageView,
+  ),
+  AutoRoute(
+    page: DoggoPageView,
   )
 ])
 @singleton

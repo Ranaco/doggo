@@ -25,6 +25,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const HomePageView());
     },
+    ProfilePageRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const ProfilePageView());
+    },
     InitialSlideRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const InitialSlideView());
@@ -40,16 +44,24 @@ class _$AppRouter extends RootStackRouter {
     SettingsPageRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const SettingsPageView());
+    },
+    DoggoPageRoute.name: (routeData) {
+      final args = routeData.argsAs<DoggoPageRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: DoggoPageView(key: args.key, breed: args.breed));
     }
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig(HomePageRoute.name, path: '/', guards: [authGuard]),
+        RouteConfig(ProfilePageRoute.name, path: '/profile-page-view'),
         RouteConfig(InitialSlideRoute.name, path: '/initial-slide-view'),
         RouteConfig(LoginPageRoute.name, path: '/login-page-view'),
         RouteConfig(SignUpPageRoute.name, path: '/sign-up-page-view'),
-        RouteConfig(SettingsPageRoute.name, path: '/settings-page-view')
+        RouteConfig(SettingsPageRoute.name, path: '/settings-page-view'),
+        RouteConfig(DoggoPageRoute.name, path: '/doggo-page-view')
       ];
 }
 
@@ -59,6 +71,15 @@ class HomePageRoute extends PageRouteInfo<void> {
   const HomePageRoute() : super(HomePageRoute.name, path: '/');
 
   static const String name = 'HomePageRoute';
+}
+
+/// generated route for
+/// [ProfilePageView]
+class ProfilePageRoute extends PageRouteInfo<void> {
+  const ProfilePageRoute()
+      : super(ProfilePageRoute.name, path: '/profile-page-view');
+
+  static const String name = 'ProfilePageRoute';
 }
 
 /// generated route for
@@ -94,4 +115,28 @@ class SettingsPageRoute extends PageRouteInfo<void> {
       : super(SettingsPageRoute.name, path: '/settings-page-view');
 
   static const String name = 'SettingsPageRoute';
+}
+
+/// generated route for
+/// [DoggoPageView]
+class DoggoPageRoute extends PageRouteInfo<DoggoPageRouteArgs> {
+  DoggoPageRoute({Key? key, required String breed})
+      : super(DoggoPageRoute.name,
+            path: '/doggo-page-view',
+            args: DoggoPageRouteArgs(key: key, breed: breed));
+
+  static const String name = 'DoggoPageRoute';
+}
+
+class DoggoPageRouteArgs {
+  const DoggoPageRouteArgs({this.key, required this.breed});
+
+  final Key? key;
+
+  final String breed;
+
+  @override
+  String toString() {
+    return 'DoggoPageRouteArgs{key: $key, breed: $breed}';
+  }
 }

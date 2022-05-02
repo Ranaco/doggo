@@ -37,6 +37,7 @@ class _HomePageViewState extends State<HomePageView> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomePageViewModel>.reactive(
         viewModelBuilder: () => HomePageViewModel(),
+        onModelReady: (model) => model.getData(),
         builder: (context, model, child) {
           return Scaffold(
               body: ListView(
@@ -109,34 +110,39 @@ class _HomePageViewState extends State<HomePageView> {
                               return Padding(
                                 padding: EdgeInsets.only(
                                     left: 20.0, right: index == 2 ? 20 : 0),
-                                child: AnimatedContainer(
-                                  child: Center(
-                                    child: Padding(
-                                      padding:  EdgeInsets.all(index == 2 ? 5.0 : 30.0),
-                                      child: images[index],
-                                    )
-                                  ),
-                                  transform: Matrix4.rotationZ(
-                                      scrollDirection ==
-                                          ScrollDirection.forward
-                                      ? 0.07
-                                      : scrollDirection == ScrollDirection.reverse
-                                          ? -0.07
-                                          : 0),
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.6),
-                                        offset: const Offset(4, 6),
-                                        blurRadius: 10,
-                                        spreadRadius: 1
+                                child: GestureDetector(
+                                        onTap: (){
+                                         model.takeToDoggoPageView();
+                                        },
+                                  child: AnimatedContainer(
+                                    child: Center(
+                                      child: Padding(
+                                        padding:  EdgeInsets.all(index == 2 ? 5.0 : 30.0),
+                                        child: images[index],
                                       )
-                                    ],
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: colors[index],
+                                    ),
+                                    transform: Matrix4.rotationZ(
+                                        scrollDirection ==
+                                            ScrollDirection.forward
+                                        ? 0.07
+                                        : scrollDirection == ScrollDirection.reverse
+                                            ? -0.07
+                                            : 0),
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.6),
+                                          offset: const Offset(4, 6),
+                                          blurRadius: 10,
+                                          spreadRadius: 1
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: colors[index],
+                                    ),
+                                    duration: const Duration(milliseconds: 100),
+                                    width: MediaQuery.of(context).size.height / 4,
                                   ),
-                                  duration: const Duration(milliseconds: 100),
-                                  width: MediaQuery.of(context).size.height / 4,
                                 ),
                               );
                             }),

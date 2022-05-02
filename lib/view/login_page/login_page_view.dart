@@ -32,8 +32,7 @@ class _LoginPageViewState extends State<LoginPageView> {
           submit() {
             if (key.currentState!.validate()) {
               key.currentState!.save();
-              print(model.password + "  " + model.email);
-              AuthService().signIn(email: model.email, password: model.password);
+              model.login();
             }
           }
 

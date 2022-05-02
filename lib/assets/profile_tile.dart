@@ -1,3 +1,5 @@
+import 'package:doggo/app/app.locator.dart';
+import 'package:doggo/app/app.router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +32,7 @@ class ProfileTile extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        print("Hello there");
+        locator<AppRouter>().navigate(const ProfilePageRoute());
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.9,

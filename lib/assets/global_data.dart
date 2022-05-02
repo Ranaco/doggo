@@ -1,24 +1,27 @@
 import 'dart:developer';
 
+import 'package:doggo/states/initial_app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:doggo/app/app.locator.dart';
 import 'package:doggo/app/app.router.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class GlobalData {
   static final _appRouter = locator<AppRouter>();
 
   static takeToHomePage() {
-    _appRouter.replace(const HomePageRoute());
-    log("there");
+    InitialAppState initialAppState = InitialAppState();
+    initialAppState.firstDone().then((value) {
+      _appRouter.replace(const HomePageRoute());
+    });
   }
 
   static popPage() {
     _appRouter.pop();
   }
 
-  static takeToAddPage() {
-    // _appRouter.navigate(const AddTaskRoute());
-    print('This is data');
+  static snackBarEvent(String event){
+    locator<SnackbarService>().showSnackbar(message: event);
   }
 }
 

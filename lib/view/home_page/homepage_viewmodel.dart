@@ -1,27 +1,23 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doggo/sevices/could_database_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 import 'package:doggo/app/app.locator.dart';
 import 'package:doggo/app/app.router.dart';
 
+import '../../states/user_data.dart';
+
 class HomePageViewModel extends BaseViewModel {
   final AppRouter _appRouter = locator<AppRouter>();
 
-  HomePageViewModel(){
-    getData();
+  void takeToDoggoPageView(){
+      _appRouter.navigate( DoggoPageRoute(breed: 'dog'));
   }
 
   getData() async {
-   CloudDatabaseService().getData(
-       collection: 'Users',
-       field: 'id',
-       fieldData: FirebaseAuth.instance.currentUser!.uid);
+    await UserData().getUser();
   }
 
   takeToAddTaskPage() async {
-    print('Hello there');
   }
 
   takeToSettingsPage() async {

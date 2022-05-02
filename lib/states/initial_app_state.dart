@@ -4,9 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @singleton
 class InitialAppState extends ChangeNotifier{
-    int first = 0;
+  int? first = 0;
+  InitialAppState() {
+    getFirst();
+  }
 
-    firstDone() async {
+    Future firstDone() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setInt('first', 1);
     }
@@ -14,7 +17,8 @@ class InitialAppState extends ChangeNotifier{
     Future<int?> getFirst() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       int? num = prefs.getInt('first');
-      return num;
+      first = num;
+      notifyListeners();
+      return first;
     }
 }
-

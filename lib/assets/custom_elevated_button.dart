@@ -6,7 +6,10 @@ import '../theme/constants.dart';
 class CustomElevatedButton extends StatelessWidget {
   final Function() onTap;
   final String text;
-  const CustomElevatedButton({Key? key, required this.onTap, this.text = "Continue"}):super(key: key);
+  final bool showIcon;
+  final MainAxisAlignment mainAxisAlignment;
+  final double width;
+  const CustomElevatedButton({Key? key, this.mainAxisAlignment = MainAxisAlignment.spaceEvenly, this.width = 200, this.showIcon = true, required this.onTap, this.text = "Continue"}):super(key: key);
   @override
         Widget build(BuildContext context){
             return InkWell(
@@ -14,21 +17,21 @@ class CustomElevatedButton extends StatelessWidget {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
               height: 50,
-              width: 200,
+              width: width,
               decoration: BoxDecoration(
               color: Constants.red,
 
               borderRadius: BorderRadius.circular(10),
            ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: mainAxisAlignment,
                     children:  [
                       Text(text,
                         style: const TextStyle(
                         fontSize: 20,
                         color: Constants.ice0
                       ),),
-                      Icon( text == "Continue" ? Feather.chevrons_right : Feather.chevron_down, color: Colors.white,)
+                      showIcon ? Icon( text == "Continue" ? Feather.chevrons_right : Feather.chevron_down, color: Colors.white,) : const SizedBox(),
                     ],
                   )
         ),

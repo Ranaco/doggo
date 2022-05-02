@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
-import 'package:doggo/assets/custom_elevated_button.dart';
 import 'package:doggo/view/signup_page/signup_page_viewmodel.dart';
 
 import '../../assets/filled_text_field.dart';
@@ -31,7 +30,7 @@ class SignUpPageView extends StatelessWidget {
               //     model.password +
               //     "  " +
               //     model.confPassword);
-              AuthService().signUp(email: model.email, password: model.password);
+            model.signUp();
             }
           }
 
@@ -111,6 +110,31 @@ class SignUpPageView extends StatelessWidget {
                                                   Constants.red),
                                               fontSize: 30))
                                 ])),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: const [
+                                    Text(
+                                      "Name",
+                                      style: TextStyle(fontSize: 20),
+                                    )
+                                  ],
+                                ),
+                                FilledTextField(
+                                  hintText: "Name",
+                                  obscureText: false,
+                                  pass: false,
+                                  suffix: const Icon(Feather.mail),
+                                  validator: (val) {
+                                    if(val == null  || val.isEmpty){
+                                      return "Name is required";
+                                    }
+                                  },
+                                  onChanged: (value) {
+                                    model.name = value!;
+                                  },
+                                ),
                                 const SizedBox(
                                   height: 20,
                                 ),
@@ -201,6 +225,27 @@ class SignUpPageView extends StatelessWidget {
                                     obscureText: model.showConfPass,
                                     pass: true,
                                     hintText: "Password"),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: const [
+                                    Text(
+                                      "Bio",
+                                      style: TextStyle(fontSize: 20),
+                                    )
+                                  ],
+                                ),
+                                FilledTextField(
+                                  isTextField: false,
+                                  hintText: "Bio",
+                                  obscureText: false,
+                                  pass: false,
+                                  suffix: const Icon(Feather.mail),
+                                  onChanged: (value) {
+                                    model.bio = value!;
+                                  },
+                                ),
                                 const SizedBox(
                                   height: 30,
                                 ),
